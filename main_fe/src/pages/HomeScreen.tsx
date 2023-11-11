@@ -106,6 +106,7 @@ const HomeScreen = () => {
               <Div>
                 {Object.entries(state).map((props: any) => (
                   <Card>
+                    <Title>{props[0]}</Title>
                     <Droppable droppableId={props[0]}>
                       {(
                         provided: DroppableProvided,
@@ -114,9 +115,15 @@ const HomeScreen = () => {
                         <div
                           {...provided.droppableProps}
                           ref={provided.innerRef}
+                          style={{
+                            background: snapshot.isDraggingOver
+                              ? "lightblue"
+                              : "",
+                            margin: "10px 0",
+                            padding: "10px 0",
+                            minHeight: "200px",
+                          }}
                         >
-                          <Title>{props[0]}</Title>
-
                           {props[1]?.data?.map((props: any, i: number) => (
                             <Draggable
                               draggableId={props.id}
